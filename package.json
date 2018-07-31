@@ -1,6 +1,6 @@
 {
     "name": "ng6-file-upload",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "description": "Fork of https://github.com/valor-software/ng2-file-upload. Compatible with angular 6",
     "main": "ng6-file-upload.umd.js",
     "jsnext:main": "ng6-file-upload.esm.js",
@@ -11,7 +11,7 @@
         "@angular/core": "^6.0.0"
     },
     "dependencies": {
-        "del": "^3.0.0"
+        
     },
     "devDependencies": {
         "@angular/common": "^6.0.0",
@@ -28,7 +28,8 @@
         "rollup-plugin-typescript": "^0.8.1",
         "rxjs": "^6.0.0",
         "typescript": "2.7.2",
-        "zone.js": "^0.8.26"
+        "zone.js": "^0.8.26",
+        "del": "^3.0.0"
     },
     "scripts": {
         "copy": "node tools/copy-package.js && node tools/cleanup.js",
