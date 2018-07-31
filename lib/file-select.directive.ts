@@ -4,7 +4,7 @@ import {FileUploader} from './file-uploader.class';
 
 // todo: filters
 
-@Directive({selector: '[ng2FileSelect]'})
+@Directive({selector: '[ng6FileSelect]'})
 export class FileSelectDirective {
   @Input() public uploader:FileUploader;
 

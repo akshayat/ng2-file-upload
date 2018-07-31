@@ -1,62 +1,86 @@
-# ng2-file-upload [![npm version](https://badge.fury.io/js/ng2-file-upload.svg)](http://badge.fury.io/js/ng2-file-upload)
-Easy to use Angular2 directives for files upload ([demo](http://valor-software.github.io/ng2-file-upload/))
+Copy of library https://valor-software.com/ng6-file-upload/, code - https://github.com/valor-software/ng6-file-upload.
 
-Follow me [![twitter](https://img.shields.io/twitter/follow/valorkin.svg?style=social&label=%20valorkin)](https://twitter.com/valorkin) to be notified about new releases.
+Compatible with angular 6. 
 
-[![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://github.com/mgechev/angular2-style-guide)
-[![Build Status](https://travis-ci.org/valor-software/ng2-file-upload.svg?branch=master)](https://travis-ci.org/valor-software/ng2-file-upload)
-[![Code Climate](https://codeclimate.com/github/valor-software/ng2-file-upload/badges/gpa.svg)](https://codeclimate.com/github/valor-software/ng2-file-upload)
-[![Join the chat at https://gitter.im/valor-software/ng2-bootstrap](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/valor-software/ng2-bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Dependency Status](https://david-dm.org/valor-software/ng2-file-upload.svg)](https://david-dm.org/valor-software/ng2-file-upload)
-[![devDependency Status](https://david-dm.org/valor-software/ng2-file-upload/dev-status.svg)](https://david-dm.org/valor-software/ng2-file-upload#info=devDependencies)
-[![Throughput Graph](https://graphs.waffle.io/valor-software/ng2-file-upload/throughput.svg)](https://waffle.io/valor-software/ng2-file-upload/metrics)
+## Usage
+
+use `ng6FileSelect` instead of `ng2FileSelect` and `ng6FileDrop` instead of `ng2FileDrop`
+
+---
+Below is the dedscription from original plugin
+
+## ng6-file-upload 
+
+Easy to use Angular2 directives for files upload ([demo] (original version)(http://valor-software.github.io/ng6-file-upload/))
+
 
 ## Quick start
 
-1. A recommended way to install ***ng2-file-upload*** is through [npm](https://www.npmjs.com/search?q=ng2-file-upload) package manager using the following command:
+1. A recommended way to install ***ng6-file-upload*** is through [npm](https://www.npmjs.com/search?q=ng6-file-upload) package manager using the following command:
 
-  `npm i ng2-file-upload --save`
+  `npm i ng6-file-upload --save`
 
-  Alternatively, you can [download it in a ZIP file](https://github.com/valor-software/ng2-file-upload/archive/master.zip).
+  Alternatively, you can [download it in a ZIP file](https://github.com/valor-software/ng6-file-upload/archive/master.zip).
 
-2. Currently `ng2-file-upload` contains two directives: `ng2-file-select` and `ng2-file-drop`. `ng2-file-select` is used for 'file-input' field of form and
-  `ng2-file-drop` is used for area that will be used for dropping of file or files.
+2. Currently `ng6-file-upload` contains two directives: `ng6-file-select` and `ng6-file-drop`. `ng6-file-select` is used for 'file-input' field of form and
+  `ng6-file-drop` is used for area that will be used for dropping of file or files.
 
-3. More information regarding using of ***ng2-file-upload*** is located in
-  [demo](http://valor-software.github.io/ng2-file-upload/) and [demo sources](https://github.com/valor-software/ng2-file-upload/tree/master/demo).
+  
+## Using ***ng6-file-upload*** in a project
 
-## API for `ng2FileSelect`
+1. Install as shown in the above section.
+
+2. Import `FileUploadModule` into the module that declares the component using ***ng6-file-upload***:
+
+```import { FileUploadModule } from 'ng6-file-upload';```
+
+3. Add it to `[imports]` under `@NgModule`:
+
+```imports: [ ... FileUploadModule, ... ]```
+
+4. Import `FileUploader` into the component:
+
+```import {  FileUploader } from 'ng6-file-upload';```
+
+5. Create a variable for the API url:
+
+```const URL = 'path_to_api';```
+
+6. Initialize it:
+
+```public uploader:FileUploader = new FileUploader({url: URL}); ```
+
+## API for `ng6FileSelect`
 
 ### Properties
 
-  - `uploader` - (`FileUploader`) - uploader object. See using in [demo](https://github.com/valor-software/ng2-file-upload/blob/master/demo/components/file-upload/simple-demo.ts)
+  - `uploader` - (`FileUploader`) - uploader object. See using in 
 
-## API for `ng2FileDrop`
+### Events
+ - `onFileSelected` - fires when files are selected and added to the uploader queue
+
+## API for `ng6FileDrop`
 
 ### Properties
 
-  - `uploader` - (`FileUploader`) - uploader object. See using in [demo](https://github.com/valor-software/ng2-file-upload/blob/master/demo/components/file-upload/simple-demo.ts)
+  - `uploader` - (`FileUploader`) - uploader object. 
 
-  Parameters that supported by this object:
+  Parameters supported by this object:
 
   1. `url` - URL of File Uploader's route
   2. `authToken` - Auth token that will be applied as 'Authorization' header during file send.
+  3. `disableMultipart` - If 'true', disable using a multipart form for file upload and instead stream the file. Some APIs (e.g. Amazon S3) may expect the file to be streamed rather than sent via a form. Defaults to false.
+  4. `itemAlias` - item alias (form name redefenition)
+  5. `formatDataFunction` - Function to modify the request body. 'DisableMultipart' must be 'true' for this function to be called.
+  6. `formatDataFunctionIsAsync` - Informs if the function sent in 'formatDataFunction' is asynchronous. Defaults to false.
+  7. `parametersBeforeFiles` - States if additional parameters should be appended before or after the file. Defaults to false.
 
 ### Events
 
   - `fileOver` - it fires during 'over' and 'out' events for Drop Area; returns `boolean`: `true` if file is over Drop Area, `false` in case of out.
-  See using in [ts demo](https://github.com/valor-software/ng2-file-upload/blob/master/demo/components/file-upload/simple-demo.ts) and
-  [html demo](https://github.com/valor-software/ng2-file-upload/blob/master/demo/components/file-upload/simple-demo.html)
-
-# Troubleshooting
-
-Please follow this guidelines when reporting bugs and feature requests:
-
-1. Use [GitHub Issues](https://github.com/valor-software/ng2-file-upload/issues) board to report bugs and feature requests (not our email address)
-2. Please **always** write steps to reproduce the error. That way we can focus on fixing the bug, not scratching our heads trying to reproduce it.
-
-Thanks for understanding!
+  
+  - `onFileDrop` - it fires after a file has been dropped on a Drop Area; you can pass in `$event` to get the list of files that were dropped. i.e. `(onFileDrop)="dropped($event)"`
 
 ### License
 
-The MIT License (see the [LICENSE](https://github.com/valor-software/ng2-file-upload/blob/master/LICENSE) file for the full text)
+The MIT License
