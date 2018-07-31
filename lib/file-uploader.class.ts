@@ -47,7 +47,7 @@ export class FileUploader {
   }
 
   public setOptions(options:any):void {
-    this.options = Object.defineProperties(this.options, options);
+    this.options = Object.assign(this.options, options);
 
     this.authToken = options.authToken;
     this.autoUpload = options.autoUpload;
